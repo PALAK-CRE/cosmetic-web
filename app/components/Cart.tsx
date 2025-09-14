@@ -10,9 +10,10 @@ interface CartProps {
 }
 
 export default function Cart({ items, onClose, onRemoveItem, onUpdateQuantity }: CartProps) {
-  const getLowestPrice = (prices: any) => {
-    return Math.min(...Object.values(prices));
-  };
+  const getLowestPrice = (prices: Record<string, number>) => {
+  return Math.min(...(Object.values(prices) as number[]));
+};
+
 
   const getTotalPrice = () => {
     return items.reduce((total, item) => {
